@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+:root{
+    --main-bg-color: rgb(29, 53, 87);
+  --div-color: rgb(69, 123, 157);
+  --header-color: rgb(168, 218, 220);
+  --text-color: rgb(241, 250, 238);
+  --warn-color: rgb(230, 57, 70);
+}
+
+body {
+    display: flex;
+    margin: 0;
+    font-family: 'Silkscreen', cursive;
+  }
