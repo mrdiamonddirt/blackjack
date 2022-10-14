@@ -63,44 +63,48 @@ const cardnumber = [
 var cardreturned = "10h";
 // card generator
 document.addEventListener('click', function(){
-    const col1 = document.getElementById('column1');
-    const col2 = document.getElementById('column2');
-    const col3 = document.getElementById('column3');
-    const suittp = document.getElementsByClassName('suit')[0];
-    const suitbm = document.getElementsByClassName('suit')[1];
-    // loops class
-    for (i=0; i < cardnumber.length; i++){
-        //checks class
-        if (cardreturned == cardnumber[i].value) {
-            // console.log(cardnumber[i])
-            //check numbers in array
-        
-            if (cardnumber[i].numberof[0] > 0) {
-
-                for (k = 0; k < cardnumber[i].numberof[0]; k++) {
-                //     console.log(cardnumber[i].numberof[j])
-                col1.innerHTML += `<p class=suit>${cardnumber[i].emoji}</p>`
-                console.log(cardnumber[i].numberof[0])
-                }
-            }
-            if (cardnumber[i].numberof[1] >= 0) {
-
-                for (k = 0; k < cardnumber[i].numberof[1]; k++) {
-                //     console.log(cardnumber[i].numberof[j])
-                col2.innerHTML += `<p class=suit>${cardnumber[i].emoji}</p>`
-                console.log(cardnumber[i].numberof[1])
-                }
-            }
-            if (cardnumber[i].numberof[0] > 0) {
-
-                for (k = 0; k < cardnumber[i].numberof[2]; k++) {
-                //     console.log(cardnumber[i].numberof[j])
-                col3.innerHTML += `<p class=suit>${cardnumber[i].emoji}</p>`
-                console.log(cardnumber[i].numberof[2])
-                }
-            }
-            
-        }
-    }
-   
+    generatecard()
 })
+
+
+function generatecard(){
+const col1 = document.getElementById('column1');
+const col2 = document.getElementById('column2');
+const col3 = document.getElementById('column3');
+const suittp = document.getElementsByClassName('suit')[0];
+const suitbm = document.getElementsByClassName('suit')[1];
+// loops class
+for (i=0; i < cardnumber.length; i++){
+    //checks class
+    if (cardreturned == cardnumber[i].value) {
+        // console.log(cardnumber[i])
+        //check numbers in array
+    
+        if (cardnumber[i].numberof[0] > 0) {
+
+            for (k = 0; k < cardnumber[i].numberof[0]; k++) {
+            //     console.log(cardnumber[i].numberof[j])
+            col1.innerHTML += `<p class=suit>${cardnumber[i].emoji}</p>`
+            console.log(cardnumber[i].numberof[0])
+            }
+        }
+        if (cardnumber[i].numberof[1] >= 0) {
+
+            for (k = 0; k < cardnumber[i].numberof[1]; k++) {
+            //     console.log(cardnumber[i].numberof[j])
+            col2.innerHTML += `<p class=suit>${cardnumber[i].emoji}</p>`
+            console.log(cardnumber[i].numberof[1])
+            }
+        }
+        if (cardnumber[i].numberof[0] > 0) {
+
+            for (k = 0; k < cardnumber[i].numberof[2]; k++) {
+            //     console.log(cardnumber[i].numberof[j])
+            col3.innerHTML += `<p class=suit>${cardnumber[i].emoji}</p>`
+            console.log(cardnumber[i].numberof[2])
+            }
+        }
+        
+    }
+}
+}
