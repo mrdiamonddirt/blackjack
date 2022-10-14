@@ -67,6 +67,7 @@ document.addEventListener('click', function(){
     generatecard()
     
 })
+
 function createcard(){
 const newcard = document.getElementById('newcard')
 newcard.innerHTML += `
@@ -76,11 +77,11 @@ newcard.innerHTML += `
       </div>
       <div class="numbercardcont">
         <div class="columns">
-          <div id="column1">
+          <div class="column1">
           </div>
-          <div id="column2">
+          <div class="column2">
           </div>
-          <div id="column3">
+          <div class="column3">
           </div>
         </div>
       </div>
@@ -90,10 +91,11 @@ newcard.innerHTML += `
     </div>
 `
 }
+
 function generatecard(){
-const col1 = document.getElementById('column1');
-const col2 = document.getElementById('column2');
-const col3 = document.getElementById('column3');
+const col1 = document.getElementsByClassName('column1')[0];
+const col2 = document.getElementsByClassName('column2')[0];
+const col3 = document.getElementsByClassName('column3')[0];
 const suittp = document.getElementsByClassName('suit')[0];
 const suitbm = document.getElementsByClassName('suit')[1];
 // loops class
