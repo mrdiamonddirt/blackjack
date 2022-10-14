@@ -60,7 +60,7 @@ const cardnumber = [
     {suit: "club",    value: "Ks",    facevalue: 10,   emoji: "♣",    indeckno:51,   facecardval: 3,    numberof: [0,0,0]},
     //club End //
 ];
-var cardreturned = "10h";
+var cardreturned = "";
 // card generator
 var cardsindeck = 52;
 function pickedcard(){
@@ -69,9 +69,9 @@ function pickedcard(){
     console.log(cardsindeck)
 }
     document.addEventListener('click', function(){
+    pickedcard()
     createcard()
     generatecard()
-    pickedcard()
     console.log(cardpicked)
 })
 
@@ -107,8 +107,7 @@ const suittp = document.getElementsByClassName('suit')[0];
 const suitbm = document.getElementsByClassName('suit')[1];
 // loops class
 for (i=0; i < cardnumber.length; i++){
-    //checks class
-    if (cardreturned == cardnumber[i].value) {
+    if (cardpicked == cardnumber[i].indeckno) {
         // console.log(cardnumber[i])
         //check numbers in array
     
