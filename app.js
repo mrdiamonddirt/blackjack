@@ -28,7 +28,7 @@ const cardnumber = [
     {suit: "Diamonds",    value: "Jd",    facevalue: 10,    emoji: "♦",    facecardval: 1,   numberof: [0,0,0]},
     {suit: "Diamonds",    value: "Qd",    facevalue: 10,    emoji: "♦",    facecardval: 2,    numberof: [0,0,0]},
     {suit: "Diamonds",    value: "Kd",    facevalue: 10,    emoji: "♦",    facecardval: 3,    numberof: [0,0,0]},
-    //Diamondss End //
+    //Diamonds End //
         //Spade
     {suit: "spade",    value: "1h",    facevalue: 1,    emoji: "♠",    facecardval: 0,    numberof: [0,1,0]},
     {suit: "spade",    value: "2s",    facevalue: 2,    emoji: "♠",    facecardval: 0,    numberof: [0,2,0]},
