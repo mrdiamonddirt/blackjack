@@ -63,10 +63,33 @@ const cardnumber = [
 var cardreturned = "10h";
 // card generator
 document.addEventListener('click', function(){
+    createcard()
     generatecard()
+    
 })
-
-
+function createcard(){
+const newcard = document.getElementById('newcard')
+newcard.innerHTML += `
+<div class="card">
+      <div class="topcardclass">
+        <p>A</p><p class="suit"></p>
+      </div>
+      <div class="numbercardcont">
+        <div class="columns">
+          <div id="column1">
+          </div>
+          <div id="column2">
+          </div>
+          <div id="column3">
+          </div>
+        </div>
+      </div>
+      <div class="bottomcard">
+        <p>A</p><p class="suit"></p>
+    </div>
+    </div>
+`
+}
 function generatecard(){
 const col1 = document.getElementById('column1');
 const col2 = document.getElementById('column2');
