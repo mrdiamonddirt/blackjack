@@ -10,6 +10,50 @@
 
 body {
     display: flex;
+    flex-direction: column;
     margin: 0;
     font-family: 'Silkscreen', cursive;
+  }
+.card{
+display: flex;
+flex-direction: row;
+height: 400px;
+width: 200px;
+border: 1px solid black;
+border-radius: 5px;
+justify-content: center;
+align-items: center;
+  }
+  .topcardclass{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+  }
+  .bottomcard{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    transform: rotate(180deg);
+  }
+  .numbercardcont{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+  }
+  .columns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80px;
+    margin: 5px;
+    padding: 25px;
+  }
+  .bottomcard{
+    display: flex;
+    justify-content: flex-end;
   }
