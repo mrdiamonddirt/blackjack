@@ -60,7 +60,7 @@ const cardnumber = [
     {name: "King of Clubs's",    value: "K<br>♣",    facevalue: 10,   emoji: "♣",    indeckno:51,   facecardval: 3,    numberof: [0,0,0]},
     //club End //
 ];
-var cardreturned = "";
+
 // card generator
 var cardsindeck = 52;
 function pickedcard(){
@@ -72,9 +72,23 @@ function pickedcard(){
     pickedcard()
     createcard()
     generatecard()
+    calscore()
     console.log(cardpicked)
     num = num + 1;
 })
+
+
+var cardsinhand = 1;
+var cardscore = 0;
+function calscore(){
+    if (cardsinhand >= 2){
+        if (cardscore >=22){
+            console.log('bust')
+        }
+        console.log(`Return ${cardscore}`)
+    }
+    cardsinhand = cardsinhand + 1;
+}
 
 function createcard(){
 const newcard = document.getElementById('newcard')
@@ -109,6 +123,8 @@ const suitbm = document.getElementsByClassName('suitbtm')[num];
 // loops class
 for (i=0; i < cardnumber.length; i++){
     if (cardpicked == cardnumber[i].indeckno) {
+        //adds value of cards together
+        cardscore = cardscore + cardnumber[i].facevalue
         // console.log(cardnumber[i])
         //check numbers in array
         console.log(cardnumber[i])
