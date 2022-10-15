@@ -43,7 +43,7 @@ body {
   border-radius: 5px;
   justify-content: center;
 }
-#newcard{
+.newcard{
   display: flex;
   flex-direction: row;
   bottom: 0;
