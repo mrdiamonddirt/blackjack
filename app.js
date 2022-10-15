@@ -104,7 +104,6 @@ function generatecard(){
 const col1 = document.getElementsByClassName('column1')[num];
 const col2 = document.getElementsByClassName('column2')[num];
 const col3 = document.getElementsByClassName('column3')[num];
-
 const suittp = document.getElementsByClassName('suittop')[num];
 const suitbm = document.getElementsByClassName('suitbtm')[num];
 // loops class
@@ -115,6 +114,13 @@ for (i=0; i < cardnumber.length; i++){
         console.log(cardnumber[i])
         suittp.innerHTML = `<p class=suit>${cardnumber[i].value}</p>`
         suitbm.innerHTML = `<p class=suit>${cardnumber[i].value}</p>`
+        if(cardnumber[i].colvalue == "r") {
+            col1.style.color = 'red';
+            col2.style.color = 'red'; 
+            col3.style.color = 'red';
+            suittp.style.color = 'red';
+            suitbm.style.color = 'red';
+        }
         if (cardnumber[i].numberof[0] > 0) {
 
             for (k = 0; k < cardnumber[i].numberof[0]; k++) {
