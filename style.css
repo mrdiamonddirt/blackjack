@@ -11,20 +11,48 @@
 body {
     display: flex;
     flex-direction: column;
+    justify-items: center;
+    justify-content: center;
     margin: 0;
     font-family: 'Silkscreen', cursive;
   }
+#playerpanel{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 
+}
+.hand{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  height: 250px;
+  width: 600px;
+  border: 1px solid black;
+  border-radius: 5px;
+  justify-content: center;
+}
+#newcard{
+  display: flex;
+  flex-direction: row;
+  bottom: 0;
+}
 .card{
 display: flex;
 flex-direction: row;
-height: 200px;
-width: 120px;
+height: 240px;
+width: 140px;
 border: 1px solid black;
-border-radius: 5px;
+border-radius: 10px;
 justify-content: center;
 align-items: center;
 text-align: center;
+padding: 5px;
+/* margin: 5px; */
   }
   .topcardclass{
     display: flex;
@@ -41,6 +69,7 @@ text-align: center;
     display: flex;
     flex-direction: column;
     border: 1px solid black;
+    border-radius: 5px;
     justify-content: center;
     align-items: center;
     justify-content: center;
@@ -49,7 +78,7 @@ text-align: center;
   .columns{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 80px;
     margin: 5px;
