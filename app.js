@@ -1,3 +1,6 @@
+// Description: This is the main file for the game. It contains the game logic for how the game works.
+
+// table of all the cards in the deck
 const cardnumber = [
   //hearts
   {name: "Ace of Heart's",       value: "1<br>♥",    colvalue: "r",    facevalue: 1,    emoji: "♥",    indeckno:0,   facecardval: 0,    numberof: [0,1,0]},
@@ -61,13 +64,16 @@ const cardnumber = [
   //club End //
 ];
 
-// card generator
+// how many cards are in the deck
 var cardsindeck = 52;
+
+// picking a random card
 function pickedcard() {
   cardpicked = Math.floor(Math.random() * cardsindeck);
   cardsindeck = cardsindeck - 1;
   console.log(cardsindeck);
 }
+
 // listening for click
 document.addEventListener("click", function () {
   pickedcard();
@@ -91,8 +97,9 @@ function calscore() {
   cardsinhand = cardsinhand + 1;
 }
 
+// creating card
 function createcard() {
-    var player = 0
+    var player = 1
 if (player == 0) {
   console.log(`Dealer = ${player}`);
   console.log(`Dealer = ${player}`);
@@ -127,6 +134,7 @@ newcard.innerHTML += `
 }
 
 var num = 0;
+// generating card with just css and html from the config
 function generatecard() {
   const col1 = document.getElementsByClassName("column1")[num];
   const col2 = document.getElementsByClassName("column2")[num];
