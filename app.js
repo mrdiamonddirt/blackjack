@@ -64,6 +64,7 @@ const cardnumber = [
   //club End //
 ];
 
+
 // how many cards are in the deck
 var cardsindeck = 52;
 
@@ -81,12 +82,18 @@ document.addEventListener("click", function () {
   generatecard();
   calscore();
   console.log(cardpicked);
-  num = num + 1;
+  // function to swap player
+  if (player == 0) {
+    player = 1;
+  } else {
+    player = 0;
+  }
 });
 
 //calculating hand score
 var cardsinhand = 1;
 var cardscore = 0;
+
 function calscore() {
   if (cardsinhand >= 2) {
     if (cardscore >= 22) {
@@ -96,19 +103,20 @@ function calscore() {
   }
   cardsinhand = cardsinhand + 1;
 }
+var player = 0
 
 // creating card
 function createcard() {
-    var player = 1
+    
 if (player == 0) {
   console.log(`Dealer = ${player}`);
-  console.log(`Dealer = ${player}`);
+  // console.log(`Dealer = ${player}`);
 }
 if (player == 1) {
   console.log(`player = ${player}`);
 //   player = 0;
   console.log(`player = ${player}`);
-  document.getElementsByClassName("newcard")[1];
+  // document.getElementsByClassName("newcard")[player];
 }
 const newcard = document.getElementsByClassName("newcard")[player];
 newcard.innerHTML += `
@@ -141,16 +149,24 @@ function generatecard() {
   const col3 = document.getElementsByClassName("column3")[num];
   const suittp = document.getElementsByClassName("suittop")[num];
   const suitbm = document.getElementsByClassName("suitbtm")[num];
+num = num + 1;
+
+  console.log(cardnumber[cardpicked])
+
   // loops class
   for (i = 0; i < cardnumber.length; i++) {
     if (cardpicked == cardnumber[i].indeckno) {
+
       //adds value of cards together
+
       cardscore = cardscore + cardnumber[i].facevalue;
       // console.log(cardnumber[i])
+
       //check numbers in array
       console.log(cardnumber[i]);
       suittp.innerHTML = `<p class=suit>${cardnumber[i].value}</p>`;
       suitbm.innerHTML = `<p class=suit>${cardnumber[i].value}</p>`;
+
       if (cardnumber[i].colvalue == "r") {
         col1.style.color = "red";
         col2.style.color = "red";
