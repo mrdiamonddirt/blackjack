@@ -1,3 +1,6 @@
+// Description: This is the main file for the game. It contains the game logic for how the game works.
+
+// table of all the cards in the deck
 const cardnumber = [
   //hearts
   {name: "Ace of Heart's",       value: "1<br>♥",    colvalue: "r",    facevalue: 1,    emoji: "♥",    indeckno:0,   facecardval: 0,    numberof: [0,1,0]},
@@ -61,13 +64,17 @@ const cardnumber = [
   //club End //
 ];
 
-// card generator
+
+// how many cards are in the deck
 var cardsindeck = 52;
+
+// picking a random card
 function pickedcard() {
   cardpicked = Math.floor(Math.random() * cardsindeck);
   cardsindeck = cardsindeck - 1;
   console.log(cardsindeck);
 }
+
 // listening for click
 document.addEventListener("click", function () {
   pickedcard();
@@ -75,12 +82,18 @@ document.addEventListener("click", function () {
   generatecard();
   calscore();
   console.log(cardpicked);
-  num = num + 1;
+  // function to swap player
+  if (player == 0) {
+    player = 1;
+  } else {
+    player = 0;
+  }
 });
 
 //calculating hand score
 var cardsinhand = 1;
 var cardscore = 0;
+
 function calscore() {
   if (cardsinhand >= 2) {
     if (cardscore >= 22) {
@@ -90,18 +103,20 @@ function calscore() {
   }
   cardsinhand = cardsinhand + 1;
 }
+var player = 0
 
+// creating card
 function createcard() {
-    var player = 0
+    
 if (player == 0) {
   console.log(`Dealer = ${player}`);
-  console.log(`Dealer = ${player}`);
+  // console.log(`Dealer = ${player}`);
 }
 if (player == 1) {
   console.log(`player = ${player}`);
 //   player = 0;
   console.log(`player = ${player}`);
-  document.getElementsByClassName("newcard")[1];
+  // document.getElementsByClassName("newcard")[player];
 }
 const newcard = document.getElementsByClassName("newcard")[player];
 newcard.innerHTML += `
@@ -127,22 +142,31 @@ newcard.innerHTML += `
 }
 
 var num = 0;
+// generating card with just css and html from the config
 function generatecard() {
   const col1 = document.getElementsByClassName("column1")[num];
   const col2 = document.getElementsByClassName("column2")[num];
   const col3 = document.getElementsByClassName("column3")[num];
   const suittp = document.getElementsByClassName("suittop")[num];
   const suitbm = document.getElementsByClassName("suitbtm")[num];
+num = num + 1;
+
+  console.log(cardnumber[cardpicked])
+
   // loops class
   for (i = 0; i < cardnumber.length; i++) {
     if (cardpicked == cardnumber[i].indeckno) {
+
       //adds value of cards together
+
       cardscore = cardscore + cardnumber[i].facevalue;
       // console.log(cardnumber[i])
+
       //check numbers in array
       console.log(cardnumber[i]);
       suittp.innerHTML = `<p class=suit>${cardnumber[i].value}</p>`;
       suitbm.innerHTML = `<p class=suit>${cardnumber[i].value}</p>`;
+
       if (cardnumber[i].colvalue == "r") {
         col1.style.color = "red";
         col2.style.color = "red";
