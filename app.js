@@ -78,7 +78,7 @@ function resetGame() {
     player = 0;
 
     // Clear the existing cards on the table for both dealer and player
-    document.querySelector("#dealer .newcard").innerHTML = "";
+    document.querySelector("#dealer").innerHTML = "";
     document.querySelector("#playerpanel .newcard").innerHTML = "";
 }
 
@@ -135,6 +135,7 @@ var player = 0
 
 // creating card
 function createcard() {
+  console.log("Creating card...")
     const currentPlayerDiv =
       player === 0
           ? document.querySelector("#dealer .newcard")
@@ -169,77 +170,83 @@ var numDealer = 0;
 var numPlayer = 0;
 // generating card with just css and html from the config
 function generatecard(cardpicked) {
-const currentPlayerDiv =
-    player === 0
-        ? document.querySelector("#dealer .newcard")
-        : document.querySelector("#playerpanel .newcard");
+  console.log("Generating card...")
 
-const col1 = currentPlayerDiv.querySelector(".column1");
-const col2 = currentPlayerDiv.querySelector(".column2");
-const col3 = currentPlayerDiv.querySelector(".column3");
-const suittp = currentPlayerDiv.querySelector(".suittop");
-const suitbm = currentPlayerDiv.querySelector(".suitbtm");
+  const currentPlayerDiv =
+      player === 0
+          ? document.querySelector("#dealer .newcard")
+          : document.querySelector("#playerpanel .newcard");
 
-  // const col2 = document.getElementsByClassName("column2")[num];
-  // const col3 = document.getElementsByClassName("column3")[num];
-  // const suittp = document.getElementsByClassName("suittop")[num];
-  // const suitbm = document.getElementsByClassName("suitbtm")[num];
+  const col1 = currentPlayerDiv.querySelector(".column1");
+  const col2 = currentPlayerDiv.querySelector(".column2");
+  const col3 = currentPlayerDiv.querySelector(".column3");
+  const suittp = currentPlayerDiv.querySelector(".suittop");
+  const suitbm = currentPlayerDiv.querySelector(".suitbtm");
 
-  let num
-
-  if (player === 0) {
-    num = numDealer;
-    numDealer++;
-  } else {
-    num = numPlayer;
-    numPlayer++;
+  if (!col1 || !col2 || !col3 || !suittp || !suitbm) {
+    console.error("Couldn't find one or more elements");
+    return;
   }
 
-  console.log(cardnumber[cardpicked])
+    // const col2 = document.getElementsByClassName("column2")[num];
+    // const col3 = document.getElementsByClassName("column3")[num];
+    // const suittp = document.getElementsByClassName("suittop")[num];
+    // const suitbm = document.getElementsByClassName("suitbtm")[num];
 
-  // loops class
-  for (i = 0; i < cardnumber.length; i++) {
-    if (cardpicked == cardnumber[i].indeckno) {
+    let num
 
-      //adds value of cards together
-
-      cardscore = cardscore + cardnumber[i].facevalue;
-      // console.log(cardnumber[i])
-
-      //check numbers in array
-      console.log(cardnumber[i]);
-      suittp.innerHTML = `<p class=suit${num}>${cardnumber[i].value}</p>`;
-      suitbm.innerHTML = `<p class=suit${num}>${cardnumber[i].value}</p>`;
-
-      if (cardnumber[i].colvalue == "r") {
-        col1.style.color = "red";
-        col2.style.color = "red";
-        col3.style.color = "red";
-        suittp.style.color = "red";
-        suitbm.style.color = "red";
-      }
-      if (cardnumber[i].numberof[0] > 0) {
-        for (k = 0; k < cardnumber[i].numberof[0]; k++) {
-          //     console.log(cardnumber[i].numberof[j])
-          col1.innerHTML += `<p class=suit>${cardnumber[i].emoji}</p>`;
-          console.log(cardnumber[i].numberof[0]);
-        }
-      }
-      if (cardnumber[i].numberof[1] >= 0) {
-        for (k = 0; k < cardnumber[i].numberof[1]; k++) {
-          //     console.log(cardnumber[i].numberof[j])
-          col2.innerHTML += `<p class=suit>${cardnumber[i].emoji}</p>`;
-          console.log(cardnumber[i].numberof[1]);
-        }
-      }
-      if (cardnumber[i].numberof[0] > 0) {
-        for (k = 0; k < cardnumber[i].numberof[2]; k++) {
-          //     console.log(cardnumber[i].numberof[j])
-          col3.innerHTML += `<p class=suit>${cardnumber[i].emoji}</p>`;
-          console.log(cardnumber[i].numberof[2]);
-        }
-      }
-      // break;
+    if (player === 0) {
+      num = numDealer;
+      numDealer++;
+    } else {
+      num = numPlayer;
+      numPlayer++;
     }
-  }
+
+    console.log(cardnumber[cardpicked])
+
+    // loops class
+    for (i = 0; i < cardnumber.length; i++) {
+      if (cardpicked == cardnumber[i].indeckno) {
+
+        //adds value of cards together
+        cardscore = cardscore + cardnumber[i].facevalue;
+        // console.log(cardnumber[i])
+
+        //check numbers in array
+        console.log(cardnumber[i]);
+        suittp.innerHTML = `<p class=suit${num}>${cardnumber[i].value}</p>`;
+        suitbm.innerHTML = `<p class=suit${num}>${cardnumber[i].value}</p>`;
+
+        if (cardnumber[i].colvalue == "r") {
+          col1.style.color = "red";
+          col2.style.color = "red";
+          col3.style.color = "red";
+          suittp.style.color = "red";
+          suitbm.style.color = "red";
+        }
+        if (cardnumber[i].numberof[0] > 0) {
+          for (k = 0; k < cardnumber[i].numberof[0]; k++) {
+            //     console.log(cardnumber[i].numberof[j])
+            col1.innerHTML += `<p class=suit>${cardnumber[i].emoji}</p>`;
+            console.log(cardnumber[i].numberof[0]);
+          }
+        }
+        if (cardnumber[i].numberof[1] >= 0) {
+          for (k = 0; k < cardnumber[i].numberof[1]; k++) {
+            //     console.log(cardnumber[i].numberof[j])
+            col2.innerHTML += `<p class=suit>${cardnumber[i].emoji}</p>`;
+            console.log(cardnumber[i].numberof[1]);
+          }
+        }
+        if (cardnumber[i].numberof[0] > 0) {
+          for (k = 0; k < cardnumber[i].numberof[2]; k++) {
+            //     console.log(cardnumber[i].numberof[j])
+            col3.innerHTML += `<p class=suit>${cardnumber[i].emoji}</p>`;
+            console.log(cardnumber[i].numberof[2]);
+          }
+        }
+        break;
+      }
+    }
 }
