@@ -64,30 +64,58 @@ const cardnumber = [
   //club End //
 ];
 
+// Array to track which cards have been picked
+const pickedCards = [];
 
-// how many cards are in the deck
 var cardsindeck = 52;
+// Function to reset the game
+function resetGame() {
+    cardsindeck = 52;
+    pickedCards.length = 0;
+    cardsinhand = 1;
+    cardscore = 0;
+    num = 0;
+    player = 0;
 
-// picking a random card
-function pickedcard() {
-  cardpicked = Math.floor(Math.random() * cardsindeck);
-  cardsindeck = cardsindeck - 1;
+    // Clear the existing cards on the table for both dealer and player
+    document.querySelector("#dealer .newcard").innerHTML = "";
+    document.querySelector("#playerpanel .newcard").innerHTML = "";
+}
+
+// Function to pick a card
+function pickCard() {
+  if (cardsindeck <= 0) {
+    console.log("No cards left in the deck");
+    return;
+  }
+
+  let cardpicked;
+  
+  // Ensure a unique card is picked
+  do {
+    cardpicked = Math.floor(Math.random() * cardsindeck);
+  } while (pickedCards.includes(cardpicked));
+
+  pickedCards.push(cardpicked);
+  cardsindeck--;
+
   console.log(cardsindeck);
+  return cardpicked;
 }
 
 // listening for click
 document.addEventListener("click", function () {
-  pickedcard();
-  createcard();
-  generatecard();
-  calscore();
-  console.log(cardpicked);
-  // function to swap player
-  if (player == 0) {
-    player = 1;
-  } else {
-    player = 0;
-  }
+    // Reset the game if needed
+    if (cardsindeck <= 0) {
+        resetGame();
+    }
+
+    const cardpicked = pickCard();
+    createcard();
+    generatecard(cardpicked);
+    calscore();
+
+    console.log(cardpicked);
 });
 
 //calculating hand score
@@ -107,49 +135,65 @@ var player = 0
 
 // creating card
 function createcard() {
-    
-if (player == 0) {
-  console.log(`Dealer = ${player}`);
-  // console.log(`Dealer = ${player}`);
-}
-if (player == 1) {
-  console.log(`player = ${player}`);
-//   player = 0;
-  console.log(`player = ${player}`);
-  // document.getElementsByClassName("newcard")[player];
-}
-const newcard = document.getElementsByClassName("newcard")[player];
-newcard.innerHTML += `
-<div class="card">
-      <div class="topcardclass">
-        <div class="suittop"></div>
-      </div>
-      <div class="numbercardcont">
-        <div class="columns">
-          <div class="column1">
-          </div>
-          <div class="column2">
-          </div>
-          <div class="column3">
-          </div>
+    const currentPlayerDiv =
+      player === 0
+          ? document.querySelector("#dealer .newcard")
+          : document.querySelector("#playerpanel .newcard");
+
+    currentPlayerDiv.innerHTML += `
+  <div class="card">
+    <div class="topcardclass">
+      <div class="suittop"></div>
         </div>
-      </div>
-      <div class="bottomcard">
-        <div class="suitbtm"></div>
+          <div class="numbercardcont">
+            <div class="columns">
+              <div class="column1">
+              </div>
+              <div class="column2">
+              </div>
+              <div class="column3">
+              </div>
+            </div>
+          </div>
+        <div class="bottomcard">
+      <div class="suitbtm"></div>
     </div>
-    </div>
-`
+  </div>
+`;
+
+    // Swap players
+    player = 1 - player; // Toggle between 0 and 1
 }
 
-var num = 0;
+var numDealer = 0;
+var numPlayer = 0;
 // generating card with just css and html from the config
-function generatecard() {
-  const col1 = document.getElementsByClassName("column1")[num];
-  const col2 = document.getElementsByClassName("column2")[num];
-  const col3 = document.getElementsByClassName("column3")[num];
-  const suittp = document.getElementsByClassName("suittop")[num];
-  const suitbm = document.getElementsByClassName("suitbtm")[num];
-num = num + 1;
+function generatecard(cardpicked) {
+const currentPlayerDiv =
+    player === 0
+        ? document.querySelector("#dealer .newcard")
+        : document.querySelector("#playerpanel .newcard");
+
+const col1 = currentPlayerDiv.querySelector(".column1");
+const col2 = currentPlayerDiv.querySelector(".column2");
+const col3 = currentPlayerDiv.querySelector(".column3");
+const suittp = currentPlayerDiv.querySelector(".suittop");
+const suitbm = currentPlayerDiv.querySelector(".suitbtm");
+
+  // const col2 = document.getElementsByClassName("column2")[num];
+  // const col3 = document.getElementsByClassName("column3")[num];
+  // const suittp = document.getElementsByClassName("suittop")[num];
+  // const suitbm = document.getElementsByClassName("suitbtm")[num];
+
+  let num
+
+  if (player === 0) {
+    num = numDealer;
+    numDealer++;
+  } else {
+    num = numPlayer;
+    numPlayer++;
+  }
 
   console.log(cardnumber[cardpicked])
 
@@ -164,8 +208,8 @@ num = num + 1;
 
       //check numbers in array
       console.log(cardnumber[i]);
-      suittp.innerHTML = `<p class=suit>${cardnumber[i].value}</p>`;
-      suitbm.innerHTML = `<p class=suit>${cardnumber[i].value}</p>`;
+      suittp.innerHTML = `<p class=suit${num}>${cardnumber[i].value}</p>`;
+      suitbm.innerHTML = `<p class=suit${num}>${cardnumber[i].value}</p>`;
 
       if (cardnumber[i].colvalue == "r") {
         col1.style.color = "red";
@@ -195,6 +239,7 @@ num = num + 1;
           console.log(cardnumber[i].numberof[2]);
         }
       }
+      // break;
     }
   }
 }
